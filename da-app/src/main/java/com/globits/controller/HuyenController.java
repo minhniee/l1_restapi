@@ -21,6 +21,7 @@ public class HuyenController {
 
     @PostMapping("/huyen/add")
     public ResponseEntity<List<Huyen>> Huyen(@RequestBody List<Huyen> Huyen) {
+//        List<Huyen>  huyens = huyenRepos.findAll();
         return new ResponseEntity<>(huyenRepos.saveAll(Huyen), HttpStatus.OK);
     }
 

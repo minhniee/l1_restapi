@@ -1,5 +1,8 @@
 package com.globits.da.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,7 +14,7 @@ public class Tinh {
 
     private String tenTinh;
 
-    @OneToMany(mappedBy = "tinh", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tinh", cascade = CascadeType.ALL,orphanRemoval = true)
     List<Huyen> huyenList;
     // Getters and Setters
 
@@ -29,5 +32,13 @@ public class Tinh {
 
     public void setTenTinh(String tenTinh) {
         this.tenTinh = tenTinh;
+    }
+
+    public List<Huyen> getHuyenList() {
+        return huyenList;
+    }
+
+    public void setHuyenList(List<Huyen> huyenList) {
+        this.huyenList = huyenList;
     }
 }

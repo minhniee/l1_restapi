@@ -1,4 +1,7 @@
 package com.globits.da.repository;
 
-public interface TinhRepository {
+import com.globits.da.domain.Tinh;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TinhRepository extends JpaRepository<Tinh, Integer> {
 }

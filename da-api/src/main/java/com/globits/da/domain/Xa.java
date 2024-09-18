@@ -1,5 +1,9 @@
 package com.globits.da.domain;
 
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,11 +11,11 @@ public class Xa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String tenXa;
 
     @ManyToOne
     @JoinColumn(name = "huyen_id")
+    @JsonIgnore
     private Huyen huyen;
     // Getters and Setters
 
@@ -30,5 +34,13 @@ public class Xa {
 
     public void setTenXa(String tenXa) {
         this.tenXa = tenXa;
+    }
+
+    public Huyen getHuyen() {
+        return huyen;
+    }
+
+    public void setHuyen(Huyen huyen) {
+        this.huyen = huyen;
     }
 }

@@ -1,5 +1,10 @@
 package com.globits.da.domain;
 
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,6 +18,7 @@ public class Huyen {
 
     @ManyToOne
     @JoinColumn(name= "tinh_id")
+    @JsonIgnore
     private Tinh tinh;
 
     @OneToMany(mappedBy = "huyen", cascade = CascadeType.ALL)
@@ -35,4 +41,21 @@ public class Huyen {
     public void setTenHuyen(String tenHuyen) {
         this.tenHuyen = tenHuyen;
     }
+
+    public Tinh getTinh() {
+        return tinh;
+    }
+
+    public void setTinh(Tinh tinh) {
+        this.tinh = tinh;
+    }
+
+    public List<Xa> getXaList() {
+        return xaList;
+    }
+
+    public void setXaList(List<Xa> xaList) {
+        this.xaList = xaList;
+    }
+
 }
